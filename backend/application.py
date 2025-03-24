@@ -14,7 +14,7 @@ load_dotenv()
 api_key = os.getenv("OPENAI_API_KEY")
 
 http_client = httpx.Client(
-    base_url="https://api.openai.com/v1",
+    base_url="https://api.openai.com/v1",   
     timeout=httpx.Timeout(60.0)
 )
 
@@ -41,6 +41,10 @@ def load_companies():
         return companies
 
 sp500_companies = load_companies()
+
+@app.route('/', methods=['GET'])
+def health_check():
+    return jsonify({"status": "healthy"}), 200
 
 @app.route('/search', methods=['POST'])
 @cross_origin() 
