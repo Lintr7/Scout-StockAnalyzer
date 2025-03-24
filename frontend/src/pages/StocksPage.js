@@ -195,7 +195,7 @@ const styles = {
   dropdown: {
     position: "absolute",
     backgroundColor: "#ffffff",
-    width: "10%", // Reduced width
+    width: "20%", // Reduced width
     borderRadius: "8px",
     boxShadow: "0px 4px 12px rgba(0, 0, 0, 0.1)",
     maxHeight: "200px",
@@ -205,7 +205,7 @@ const styles = {
     marginTop: "2px",
     border: "1px solid #e2e8f0",
     zIndex: 1000,
-    left: "40%", // Centering dropdown under input
+    left: "35%", // Centering dropdown under input
   },
   dropdownItem: {
     padding: "10px",
