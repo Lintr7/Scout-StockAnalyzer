@@ -68,7 +68,7 @@ def search_company():
         return jsonify({"error": "No news found"}), 404
 
     # OpenAI Sentiment Analysis
-    prompt = f"Analyze the sentiment of the following news headlines about {company}'s stock. Provide a short summary of the sentiment and calculate the average sentiment score on a scale of 0 (negative) to 10 (positive). Return only the summary in bullet points with specific yet short & concise news examples and the average sentiment score as a number. Output should be in the exact format of: Average Sentiment Score _/10. Then the summary."
+    prompt = f"Analyze the sentiment of the following news headlines about {company}'s stock. Provide a short summary of the sentiment and calculate the average sentiment score on a scale of 0 (negative) to 10 (positive). Return only the summary in bullet points with specific yet short & concise news examples and the average sentiment score as a number. Output should be in the exact format of: Average Sentiment Score: _/10. Then the summary."
    
     response = client.chat.completions.create(
         model="gpt-4o",
