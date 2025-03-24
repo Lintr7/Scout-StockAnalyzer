@@ -7,10 +7,21 @@ from flask_cors import CORS
 from flask_cors import cross_origin
 import os
 from dotenv import load_dotenv
+import httpx
+
 
 load_dotenv()
 api_key = os.getenv("OPENAI_API_KEY")
-openai.api_key = api_key
+
+http_client = httpx.Client(
+    base_url="https://api.openai.com/v1",
+    timeout=httpx.Timeout(60.0)
+)
+
+client = openai.OpenAI(
+    api_key=api_key,
+    http_client=http_client
+)
 
 #client = openai.OpenAI(api_key=api_key)
 
