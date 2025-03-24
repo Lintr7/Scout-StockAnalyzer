@@ -26,7 +26,7 @@ client = openai.OpenAI(
 #client = openai.OpenAI(api_key=api_key)
 
 app = Flask(__name__)
-allowed_origins = os.getenv("ALLOWED_ORIGINS", "http://localhost:3000,http://127.0.0.1:5000").split(',')
+allowed_origins = os.getenv("ALLOWED_ORIGINS", "http://localhost:3000,http://127.0.0.1:5000,https://scout-stock-analyzer.vercel.app").split(',')
 CORS(app, resources={r"/*": {"origins": allowed_origins}})
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
