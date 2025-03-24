@@ -79,6 +79,9 @@ function StocksPage() {
         <h2 style={styles.title}>📊 Stock Sentiment Analysis</h2>
         <p style={styles.description}>
           Get AI-driven sentiment analysis for stocks based on news.
+        </p>  
+        <p style={{ fontWeight: '600', fontSize: '1.2em' }}>
+          {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
         </p>
 
         <div style={styles.inputContainer}>
