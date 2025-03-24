@@ -35,10 +35,14 @@ function StocksPage() {
     setRecommendation("");
 
     try {
-      const API_URL = process.env.REACT_APP_API_URL || "http://scouterenv.eba-bucja4n5.us-east-1.elasticbeanstalk.com/search";
+      const baseURL = process.env.REACT_APP_API_URL || "http://scouterenv.eba-bucja4n5.us-east-1.elasticbeanstalk.com/search";
+      const API_URL = `https://proxy.cors.sh/${baseURL}`;
       const response = await fetch(API_URL, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+          "Content-Type": "application/json",
+          "x-cors-api-key": "temp_988e25c28a538a24c3dcccb3defb8dde"
+        },
         body: JSON.stringify({ company: query }),
       });
 
