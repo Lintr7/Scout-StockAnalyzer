@@ -1,70 +1,29 @@
-# Getting Started with Create React App
+# Welcome to Scout! 📈📊
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## What is Scout? 🤔
 
-## Available Scripts
+Scout is an AI-powered stock sentiment analyzer tailored for S&P 500 companies. Simply search for a company, and our backend will scrape Google News to gather the top 10 relevant articles. By leveraging the OpenAI API, Scout then provides an in-depth sentiment analysis along with a sentiment score (from 1 to 10) and a recommendation—keeping you updated on the latest market trends.
 
-In the project directory, you can run:
+## Try It Out Now! 🤩
 
-### `npm start`
+Experience Scout in action (best viewed on a laptop):  
+[https://scout-stock-analyzer.vercel.app](https://scout-stock-analyzer.vercel.app)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Tech Stack 🛠️
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+**Frontend:**
+- React.js
+- Material UI
 
-### `npm test`
+**Backend:**
+- Flask
+- AWS Elastic Beanstalk (for seamless Flask deployment)
+- Python (for web scraping and OpenAI sentiment analysis)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Challenges Faced 😰
 
-### `npm run build`
+During development, we tackled several challenges:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **Responsive Design:** Ensuring our React components scaled and displayed correctly across different screen sizes required meticulous adjustments and testing.
+- **AWS Elastic Beanstalk:** Configuring and restructuring files to meet AWS deployment requirements definitely proved to be a complicated.
+- **API Communication:** Initially, our API endpoint calls failed due to mixed content issues (HTTPS on the frontend vs. HTTP on the backend). We resolved this by implementing a secure proxy to align both endpoints under HTTPS.
