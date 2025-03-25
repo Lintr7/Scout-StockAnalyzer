@@ -15,7 +15,7 @@ function Homepage() {
   return (
     <div className='wrapper'>
       <div style={{ textAlign: 'center', marginTop: '50px' }}>
-        <Card className="fadeLeft" sx={{ position: 'absolute', zIndex: '1', animation: 'fadeLeft 1s', background: 'rgb(51, 65, 94)', marginTop: '21vh', marginLeft: '10.1em', height: '14em', width: '26em', padding: '20px', display: 'inline-block', borderRadius: '20px' }}>
+        <Card className="fadeLeft" sx={{ position: 'absolute', zIndex: '1', animation: 'fadeLeft 1s', background: 'rgb(51, 65, 94)', marginTop: '21vh', right: '7.35em', height: '14em', width: '26em', padding: '20px', display: 'inline-block', borderRadius: '20px' }}>
           <CardContent>
             <Link to="/stocks">
               <Button
