@@ -15,7 +15,7 @@ function Homepage() {
   return (
     <div className='wrapper'>
       <div style={{ textAlign: 'center', marginTop: '50px' }}>
-        <Card className="fadeLeft" sx={{ position: 'absolute', zIndex: '1', animation: 'fadeLeft 1s', background: 'rgb(51, 65, 94)', marginTop: '11em', marginLeft: '10.1em', height: '14em', width: '26em', padding: '20px', display: 'inline-block', borderRadius: '20px' }}>
+        <Card className="fadeLeft" sx={{ position: 'absolute', zIndex: '1', animation: 'fadeLeft 1s', background: 'rgb(51, 65, 94)', marginTop: '21vh', right: '14vh', height: '14em', width: '26em', padding: '20px', display: 'inline-block', borderRadius: '20px' }}>
           <CardContent>
             <Link to="/stocks">
               <Button
@@ -43,7 +43,7 @@ function Homepage() {
 
         <h2 style={{fontSize: '1.8em', color: '#9167fb', userSelect: 'none', position: 'absolute', top: '0.6em', left: '2.5em', margin: '0'}}>Scout</h2>
         {/*help*/}
-        <h2 className="fadeUpText" style={{ fontSize: '10.3vh', maxWidth: '130vh', userSelect: 'none', position: 'absolute', top: '0.55em', left: '1.49em', color: 'rgb(151, 239, 210)', zIndex: '1'}}>Market Insights <br /> Powered by AI</h2>
+        <h2 className="fadeUpText" style={{ fontSize: '10.3vh', userSelect: 'none', position: 'absolute', top: '0.55em', right: '84.3vh', color: 'rgb(151, 239, 210)', zIndex: '1'}}>Market Insights <br /> Powered by AI</h2>
       <div style={{width:'100vw', height:'100vh', transform: 'scale(1.025)', marginTop: '-15em'}}>
         <div style={{
           position: 'relative', 
