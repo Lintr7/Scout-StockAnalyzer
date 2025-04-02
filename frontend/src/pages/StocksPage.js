@@ -36,7 +36,7 @@ function StocksPage() {
     setRecommendation("");
 
     try {
-      const baseURL = process.env.REACT_APP_API_URL || "http://scouterenv.eba-bucja4n5.us-east-1.elasticbeanstalk.com/search";
+      const baseURL = process.env.REACT_APP_API_URL || "http://scout4env2.us-east-1.elasticbeanstalk.com/search";
       const API_URL = `https://proxy.cors.sh/${baseURL}`;
       const response = await fetch(API_URL, {
         method: "POST",
