@@ -5,6 +5,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import LoginForm from './components/LoginForm';
 import Homepage from './pages/Homepage';
 import StocksPage from './pages/StocksPage';
+import AuthCallback from './components/AuthCallback'; // New component
 
 function App() {
   return (
@@ -14,14 +15,14 @@ function App() {
           <Routes>
             <Route path="/" element={<Homepage />} />
             <Route path="/auth" element={<LoginForm />} />
-            <Route path="/auth/callback" element={<Navigate to="/stocks" replace />} />
-            <Route 
-              path="/stocks" 
+            <Route path="/auth/callback" element={<AuthCallback />} />
+            <Route
+              path="/stocks"
               element={
                 <ProtectedRoute>
                   <StocksPage />
                 </ProtectedRoute>
-              } 
+              }
             />
           </Routes>
         </main>

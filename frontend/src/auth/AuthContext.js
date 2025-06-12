@@ -3,8 +3,6 @@ import { createClient } from '@supabase/supabase-js';
 
 const supabaseUrl = process.env.REACT_APP_SUPABASE_URL;
 const supabaseKey = process.env.REACT_APP_SUPABASE_ANON_KEY;
-
-
 export const supabase = createClient(supabaseUrl, supabaseKey);
 
 const AuthContext = createContext();
@@ -20,51 +18,82 @@ export const useAuth = () => {
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [initializing, setInitializing] = useState(true);
 
   useEffect(() => {
-  let mounted = true;
+    let mounted = true;
 
-  const initAuth = async () => {
-    const { data: { session }, error } = await supabase.auth.getSession();
-    if (error) {
-      console.error('Session error:', error);
-    }
+    const initAuth = async () => {
+      try {
+        const { data: { session }, error } = await supabase.auth.getSession();
+        if (error) {
+          console.error('Session error:', error);
+        }
+        
+        if (mounted) {
+          setUser(session?.user ?? null);
+          setLoading(false);
+          setInitializing(false);
+        }
+      } catch (error) {
+        console.error('Auth initialization error:', error);
+        if (mounted) {
+          setLoading(false);
+          setInitializing(false);
+        }
+      }
+    };
 
-    if (mounted) {
-      setUser(session?.user ?? null);
-      setLoading(false);
-    }
-  };
+    const { data: subscription } = supabase.auth.onAuthStateChange(
+      async (event, session) => {
+        console.log('Auth state change:', event, session?.user?.id);
+        
+        if (mounted) {
+          setUser(session?.user ?? null);
+          setLoading(false);
+        }
+      }
+    );
 
-  const { data: subscription } = supabase.auth.onAuthStateChange((_event, session) => {
-    if (mounted) {
-      setUser(session?.user ?? null);
-    }
-  });
+    initAuth();
 
-  initAuth();
-
-  return () => {
-    mounted = false;
-    subscription?.unsubscribe?.();
-  };
-}, []);
-
-
+    return () => {
+      mounted = false;
+      subscription?.unsubscribe?.();
+    };
+  }, []);
 
   const signInWithGoogle = async () => {
-    const { error } = await supabase.auth.signInWithOAuth({
-      provider: 'google',
-      options: {
-        redirectTo: `${window.location.origin}/auth/callback` // let router handle redirect
-      }
-    });
-    if (error) throw error;
+    try {
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: 'google',
+        options: {
+          redirectTo: `${window.location.origin}/auth/callback`,
+          queryParams: {
+            access_type: 'offline',
+            prompt: 'consent',
+          }
+        }
+      });
+      if (error) throw error;
+    } catch (error) {
+      console.error('Google sign in error:', error);
+      throw error;
+    }
   };
 
   const signInWithEmail = async (email, password) => {
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
-    if (error) throw error;
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({ 
+        email, 
+        password 
+      });
+      if (error) throw error;
+      return data;
+    } catch (error) {
+      console.error('Email sign in error:', error);
+      throw error;
+    }
   };
 
   const signUpWithEmail = async (email, password) => {
@@ -86,6 +115,7 @@ export const AuthProvider = ({ children }) => {
   const value = {
     user,
     loading,
+    initializing,
     isAuthenticated: !!user,
     signInWithGoogle,
     signInWithEmail,
